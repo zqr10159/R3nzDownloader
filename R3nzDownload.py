@@ -12,9 +12,9 @@ class Downloader(QWidget):
 
     def initUI(self):
         self.setWindowTitle('R3nzSkin Downloader')
-        self.resize(300, 150)
+        self.resize(400, 200)
         self.btn_download = QPushButton('请选择英雄联盟文件夹下的Game文件夹', self)
-        self.btn_download.setGeometry(80, 60, 140, 30)
+        self.btn_download.setGeometry(80, 80, 300, 30)
         self.btn_download.clicked.connect(self.download)
 
         self.show()
@@ -43,6 +43,8 @@ class Downloader(QWidget):
                 os.remove(os.path.join(directory, 'R3nzSkin_Injector.exe'))
                 # Rename R3nzSkin.dll to hid.dll and copy to Game folder
                 original_file = os.path.join(directory, 'R3nzSkin.dll')
+                if(os.path.exists(os.path.join(directory, 'hid.dll'))):
+                    os.remove(os.path.join(directory, 'hid.dll'))
                 new_file = os.path.join(directory, 'hid.dll')
                 os.rename(original_file, new_file)
 
